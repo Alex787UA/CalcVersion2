@@ -4,7 +4,7 @@ const DeleteButton = document.querySelector("#delete");
 const ClearAllButton = document.getElementById("ClearAll");
 const ResultButton = document.querySelector("#result");
 const number  = document.querySelector("[data-number]");
-const operator = document.querySelectorAll("[data-operator]");
+const operatorButtons = document.querySelectorAll("[data-operator]");
 const display =  document.querySelector(`#display`);
 
 
@@ -20,12 +20,13 @@ function appendToDisplay(number) {
 function appendOperator(operator) {
         numArray.push(parseFloat(displayValue));
         displayValue = '';
-        currentOperator = operator;
+        currentOperator = operatorButtons;
       }
 
 
 function updateDisplay() {
-   displayValue = display.textContent
+
+  display.textContent = displayValue;
 
 
 
@@ -37,7 +38,7 @@ operatorButtons.forEach(button => {
   button.addEventListener('click', function() {
     appendOperator(button.getAttribute("data-operator"));
   });
-});
+});V
 
 DeleteButton.addEventListener('click', function() {
   displayValue = numArray.pop();
@@ -51,7 +52,7 @@ ClearAllButton.addEventListener('click', function() {
     updateDisplay();
 
 });
-
+ResultButton.addEventListener('click', calculate);
 
 function calculate() {
 numArray.push(parseFloat(displayValue));
@@ -77,4 +78,4 @@ for (let i = 1; i < numArray.length; i++) {switch (currentOperator) {
       updateDisplay();
       }
 
-      ResultButton.addEventListener('click', calculate);
+      
